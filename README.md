@@ -29,5 +29,3 @@ You can follow the same procedure to update the plugin
 - Make sure your NodeJS is at least v16 (`node --version`).
 - `npm i` or `yarn` to install dependencies.
 - `npm run dev` to start compilation in watch mode.
-
-## Support 
