@@ -3,7 +3,7 @@
 	"name": "Copy Inline Code",
 	"version": "1.0.0",
 	"minAppVersion": "0.15.0",
-	"description": "Adds an icon inside each inline code, which when clicked, copies the content of the code into the clipboard.",
+	"description": "Easily copy the contents of an inline code element with a single click.",
 	"author": "Ondrej Zavodny",
 	"authorUrl": "https://github.com/Alddar",
 	"fundingUrl": "https://ko-fi.com/alddar",

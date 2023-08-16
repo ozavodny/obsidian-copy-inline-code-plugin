@@ -8,7 +8,6 @@ import {
   PluginValue,
   ViewPlugin,
   ViewUpdate,
-  WidgetType,
 } from "@codemirror/view";
 import { CopyWidget } from "./copy-code-widget";
 
