@@ -10,7 +10,13 @@ export class CopyWidget extends WidgetType {
     const icon = createSpan({cls: "copy-to-clipboard-icon", text: " 📋"})
 
     icon.onclick = (event) => {
-        const textToCopy = (event.target as HTMLElement)?.parentNode?.querySelector('.cm-inline-code:not(.cm-formatting)')?.innerHTML
+        const element = (event.target as HTMLElement)
+        let previousElement = element.previousElementSibling
+        while(previousElement && !previousElement.matches('.cm-inline-code:not(.cm-formatting)')) {
+          previousElement = previousElement.previousElementSibling
+        }
+
+        const textToCopy = previousElement?.innerHTML
         if(textToCopy) {
             navigator.clipboard.writeText(textToCopy)
             new Notice(`Copied '${textToCopy}' to clipboard!`);
