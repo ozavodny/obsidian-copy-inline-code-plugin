@@ -16,7 +16,6 @@ export class CopyWidget extends WidgetType {
           previousElement = previousElement.previousElementSibling
         }
 
-        console.log("", element, previousElement)
         const textToCopy = previousElement?.innerHTML
         if(textToCopy) {
             navigator.clipboard.writeText(textToCopy)
