@@ -16,8 +16,9 @@ export default class CopyInlineCodePlugin extends Plugin {
 				const icon = createSpan({cls: "copy-to-clipboard-icon", text: "\xa0📋"})
 				const textToCopy = code.textContent
 
-				icon.onclick = () => {			
+				icon.onclick = (event) => {			
 					if(textToCopy) {
+						event.stopPropagation();
 						navigator.clipboard.writeText(textToCopy)
 						new Notice(`Copied '${textToCopy}' to clipboard!`);
 					}
