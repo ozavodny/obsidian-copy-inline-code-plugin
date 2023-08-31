@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-sample-plugin",
-	"version": "1.1.0",
+	"version": "1.1.1",
 	"description": "This is a plugin for Obsidian that adds an icon inside each inline code, which when clicked, copies the content of the code into the clipboard.",
 	"main": "main.js",
 	"scripts": {
