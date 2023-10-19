@@ -7,7 +7,7 @@ export class CopyWidget extends WidgetType {
     }
 
   toDOM(view: EditorView): HTMLElement {
-    const icon = createSpan({cls: "copy-to-clipboard-icon", text: "\xa0📋"})
+    const icon = createSpan({cls: "copy-to-clipboard-icon", text: "a \xa0📋"})
 
     icon.onclick = (event) => {
         const element = (event.target as HTMLElement)

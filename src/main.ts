@@ -1,10 +1,39 @@
+import { CopyInlineCodePluginTab } from "./settings";
 import { Notice, Plugin } from 'obsidian';
 import { copyPlugin as copyInlineCodePlugin } from './copy-inline-code-view-plugin';
 
-export default class CopyInlineCodePlugin extends Plugin {
 
-	async onload() {
-		this.registerEditorExtension([copyInlineCodePlugin]);
+interface CopyInlineCodePluginSettings {
+  showOnHover: boolean;
+}
+
+const DEFAULT_SETTINGS: Partial<CopyInlineCodePluginSettings> = {
+  showOnHover: false,
+};
+
+export default class CopyInlineCodePlugin extends Plugin {
+  settings: CopyInlineCodePluginSettings;
+
+  async onload() {
+    await this.loadSettings();
+
+    
+
+    this.addSettingTab(new CopyInlineCodePluginTab(this.app, this));
+    this.copyInlineCodeLogic();
+    
+  }
+
+  async loadSettings() {
+    this.settings = Object.assign({}, DEFAULT_SETTINGS, await this.loadData());
+  }
+
+  async saveSettings() {
+    await this.saveData(this.settings);
+  }
+
+  async copyInlineCodeLogic() {
+    this.registerEditorExtension([copyInlineCodePlugin]);
 		this.registerMarkdownPostProcessor((element, context) => {
 			const inlineCodes = element.querySelectorAll("*:not(pre) > code");
 			
@@ -27,5 +56,6 @@ export default class CopyInlineCodePlugin extends Plugin {
 				code.appendChild(icon)
 			})
 		})
-	}
+  }
 }
+
