@@ -11,10 +11,13 @@ import {
 } from "@codemirror/view";
 import { CopyWidget } from "./copy-code-widget";
 
+
 class CopyInlineCodeViewPlugin implements PluginValue {
   decorations: DecorationSet;
+  showOnHover: boolean;
 
-  constructor(view: EditorView) {
+  constructor(view:EditorView, showOnHover: boolean) {
+    this.showOnHover = showOnHover;
     this.decorations = this.buildDecorations(view);
   }
 
@@ -28,7 +31,7 @@ class CopyInlineCodeViewPlugin implements PluginValue {
 
   buildDecorations(view: EditorView): DecorationSet {
     const builder = new RangeSetBuilder<Decoration>();
-
+    const showOnHover = this.showOnHover
     for (const { from, to } of view.visibleRanges) {
       syntaxTree(view.state).iterate({
         from,
@@ -39,7 +42,7 @@ class CopyInlineCodeViewPlugin implements PluginValue {
               node.to + 1,
               node.to + 1,
               Decoration.widget({
-                widget: new CopyWidget(),
+                widget: new CopyWidget(showOnHover),
               })
             );
           }
@@ -51,11 +54,11 @@ class CopyInlineCodeViewPlugin implements PluginValue {
   }
 }
 
-const pluginSpec: PluginSpec<CopyInlineCodeViewPlugin> = {
-  decorations: (value: CopyInlineCodeViewPlugin) => value.decorations,
+export const createCopyPlugin = (showOnHover: boolean) => {
+  return ViewPlugin.define(
+    (view: EditorView) => new CopyInlineCodeViewPlugin(view, showOnHover),
+    {
+      decorations: (p) => p.decorations,
+    }
+  );
 };
-
-export const copyPlugin = ViewPlugin.fromClass(
-  CopyInlineCodeViewPlugin,
-  pluginSpec
-);

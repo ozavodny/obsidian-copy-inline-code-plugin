@@ -2,13 +2,15 @@ import { EditorView, WidgetType } from "@codemirror/view";
 import { Notice } from "obsidian";
 
 export class CopyWidget extends WidgetType {
-    constructor() {
-        super();
-    }
+  showOnHover: boolean;
+  constructor(showOnHover: boolean) { 
+    super();
+    this.showOnHover = showOnHover;
+  }
 
   toDOM(view: EditorView): HTMLElement {
-    const icon = createSpan({cls: "copy-to-clipboard-icon", text: "a \xa0📋"})
-
+    const icon = createSpan({cls:  "copy-to-clipboard-icon", text: "\xa0📋"})
+    icon.toggleClass("show-on-hover", this.showOnHover)
     icon.onclick = (event) => {
         const element = (event.target as HTMLElement)
         let previousElement = element.previousElementSibling

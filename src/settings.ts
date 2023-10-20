@@ -17,7 +17,7 @@ export class CopyInlineCodePluginTab extends PluginSettingTab {
 
     new Setting(containerEl)
       .setName("Show on hover")
-      .setDesc("Copy icon only visible on hover")
+      .setDesc("Copy icon only visible on hover (restart obsidian after change)")
       .addToggle((component) => {
           component
           .setValue(this.plugin.settings.showOnHover)
