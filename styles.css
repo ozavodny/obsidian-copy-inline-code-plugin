@@ -15,3 +15,8 @@
 code:hover .show-on-hover {
     opacity: 1.0;
 }
+
+.tasks-setting-important {
+	color: red;
+	font-weight: bold;
+}

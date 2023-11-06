@@ -14,7 +14,11 @@ export class CopyInlineCodePluginTab extends PluginSettingTab {
     const { containerEl } = this;
 
     containerEl.empty();
-
+    containerEl.createEl('p', {
+        cls: 'tasks-setting-important',
+        text: 'Changing any settings requires a restart of obsidian.',
+    });
+    
     new Setting(containerEl)
       .setName("Show on hover")
       .setDesc("Copy icon only visible on hover (restart obsidian after change)")
