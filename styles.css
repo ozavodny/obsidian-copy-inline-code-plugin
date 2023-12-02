@@ -1,3 +1,22 @@
 .copy-to-clipboard-icon {
     cursor: pointer
 }
+
+.show-on-hover {
+    cursor: pointer;
+    opacity: 0;
+}
+
+/* Source Mode */
+.cm-line:hover .show-on-hover {
+    opacity: 1.0;
+}
+/* Reading Mode */
+code:hover .show-on-hover {
+    opacity: 1.0;
+}
+
+.tasks-setting-important {
+	color: red;
+	font-weight: bold;
+}
