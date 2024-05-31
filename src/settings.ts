@@ -15,20 +15,33 @@ export class CopyInlineCodePluginTab extends PluginSettingTab {
 
     containerEl.empty();
     containerEl.createEl('p', {
-        cls: 'tasks-setting-important',
-        text: 'Changing any settings requires a restart of obsidian.',
+      cls: 'tasks-setting-important',
+      text: 'Changing any settings requires a restart of obsidian.',
     });
-    
+
     new Setting(containerEl)
       .setName("Show on hover")
       .setDesc("Copy icon only visible on hover (restart obsidian after change)")
       .addToggle((component) => {
-          component
+        component
           .setValue(this.plugin.settings.showOnHover)
           .onChange(async (value) => {
             this.plugin.settings.showOnHover = value;
             await this.plugin.saveSettings();
           })
+      });
+
+    new Setting(containerEl)
+      .setName("Icon Symbol")
+      .setDesc("Choose the symbol for the icon: 📋 or ⧉ (restart obsidian after change)")
+      .addDropdown((dropdown) => {
+        dropdown.addOption('📋', 'Clipboard 📋');
+        dropdown.addOption('⧉', 'Square ⧉');
+        dropdown.setValue(this.plugin.settings.iconSymbol || '📋');
+        dropdown.onChange(async (value) => {
+          this.plugin.settings.iconSymbol = value;
+          await this.plugin.saveSettings();
         });
+      });
   }
 }

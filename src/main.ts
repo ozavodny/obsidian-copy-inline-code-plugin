@@ -5,10 +5,12 @@ import { createCopyPlugin } from './copy-inline-code-view-plugin';
 
 interface CopyInlineCodePluginSettings {
   showOnHover: boolean;
+  iconSymbol: string;
 }
 
 const DEFAULT_SETTINGS: Partial<CopyInlineCodePluginSettings> = {
   showOnHover: false,
+  iconSymbol: '📋'
 };
 
 export default class CopyInlineCodePlugin extends Plugin {
@@ -30,7 +32,7 @@ export default class CopyInlineCodePlugin extends Plugin {
   }
 
   async copyInlineCodeLogic() {
-    this.registerEditorExtension([createCopyPlugin(this.settings.showOnHover)]);
+    this.registerEditorExtension([createCopyPlugin(this.settings.showOnHover, this.settings.iconSymbol)]);
 		this.registerMarkdownPostProcessor((element, context) => {
 			const inlineCodes = element.querySelectorAll("*:not(pre) > code");
 			
@@ -39,7 +41,7 @@ export default class CopyInlineCodePlugin extends Plugin {
 					return
 				}
 
-				const icon = createSpan({cls: "copy-to-clipboard-icon", text: "\xa0📋"})
+				const icon = createSpan({cls: "copy-to-clipboard-icon", text: `\xa0${this.settings.iconSymbol}`})
         icon.toggleClass("show-on-hover", this.settings.showOnHover)
         const textToCopy = code.textContent
 
