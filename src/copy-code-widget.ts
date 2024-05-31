@@ -3,13 +3,16 @@ import { Notice } from "obsidian";
 
 export class CopyWidget extends WidgetType {
   showOnHover: boolean;
-  constructor(showOnHover: boolean) { 
+  iconSymbol: string;
+
+  constructor(showOnHover: boolean, iconSymbol: string) {
     super();
     this.showOnHover = showOnHover;
+    this.iconSymbol = iconSymbol;
   }
 
   toDOM(view: EditorView): HTMLElement {
-    const icon = createSpan({cls:  "copy-to-clipboard-icon", text: "\xa0📋"})
+    const icon = createSpan({cls:  "copy-to-clipboard-icon", text: `\xa0${this.iconSymbol}`})
     icon.toggleClass("show-on-hover", this.showOnHover)
     icon.onclick = (event) => {
         const element = (event.target as HTMLElement)
