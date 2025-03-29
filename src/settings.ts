@@ -92,7 +92,6 @@ export class CopyInlineCodePluginTab extends PluginSettingTab {
 								value,
 							];
 							await this.plugin.saveSettings();
-							this.renderRegexList(container);
 						});
 					const textEl = text.inputEl;
 					textEl.style.width = "20%";
