@@ -1,6 +1,6 @@
 {
 	"name": "obsidian-copy-inline-code-plugin",
-	"version": "2.0.4",
+	"version": "2.1.0",
 	"description": "This is a plugin for Obsidian that adds an icon inside each inline code, which when clicked, copies the content of the code into the clipboard.",
 	"main": "main.js",
 	"type": "module",

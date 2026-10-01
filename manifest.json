@@ -1,7 +1,7 @@
 {
 	"id": "copy-inline-code",
 	"name": "Copy Inline Code",
-	"version": "2.0.4",
+	"version": "2.1.0",
 	"minAppVersion": "0.15.0",
 	"description": "Easily copy the contents of an inline code element with a single click.",
 	"author": "Ondrej Zavodny, Vitovt",
