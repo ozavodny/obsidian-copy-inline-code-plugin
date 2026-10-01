@@ -11,8 +11,8 @@
 		"version": "node version-bump.mjs && git add manifest.json versions.json"
 	},
 	"keywords": [],
-	"author": "",
-	"license": "MIT",
+	"author": "Ondrej Zavodny, Vitovt",
+	"license": "GPL-3.0-only",
 	"engines": {
 		"node": ">=18.18.0"
 	},

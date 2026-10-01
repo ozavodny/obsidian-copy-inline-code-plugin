@@ -4,8 +4,7 @@
 	"version": "2.0.4",
 	"minAppVersion": "0.15.0",
 	"description": "Easily copy the contents of an inline code element with a single click.",
-	"author": "Ondrej Zavodny",
-	"authorUrl": "https://github.com/Alddar",
-	"fundingUrl": "https://ko-fi.com/alddar",
+	"author": "Ondrej Zavodny, Vitovt",
+	"authorUrl": "https://github.com/ozavodny",
 	"isDesktopOnly": false
 }
